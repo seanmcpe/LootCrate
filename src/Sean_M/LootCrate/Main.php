@@ -16,10 +16,11 @@ class Main extends PluginBase implements Listener {
         $this->saveDefaultConfig();
         $this->config = $this->getConfig()->getAll();
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
+           $time = $this->config["time"];
+           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $time * 3);  
      }
 
      public function onDisable() {
         $this->getLogger()->info(TextFormat::RED . "LootCrate by Sean_M disabled!");
      }
-// soon
 }  
