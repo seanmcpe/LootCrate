@@ -18,7 +18,6 @@ use pocketmine\math\Vector3;
        $y = $this->config["y"];
        $z = $this->config["z"];
        $pos = new Vector3($x, $y, $z);
-/*       $chest = Block::fromString(Chest);
+       $chest = Block::fromString("Chest");
           $level->setBlock($pos, $chest);
-*/
     }
