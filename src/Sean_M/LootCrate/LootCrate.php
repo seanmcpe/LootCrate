@@ -4,6 +4,8 @@ namespace Sean_M\LootCrate;
 
 use pocketmine\utils\TextFormat;
 use pocketmine\Player;
+use pocketmine\inventory\Inventory;
+use pocketmine\block\Block;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
@@ -20,4 +22,7 @@ use pocketmine\math\Vector3;
        $pos = new Vector3($x, $y, $z);
        $chest = Block::fromString("Chest");
           $level->setBlock($pos, $chest);
+             if($chest->firstEmpty() == -1) {
+                $air = Block::fromString("Air");
+                $level->setBlock($pos, $air);
     }
