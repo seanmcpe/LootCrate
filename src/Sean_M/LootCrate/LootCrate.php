@@ -22,6 +22,7 @@ use pocketmine\math\Vector3;
        $pos = new Vector3($x, $y, $z);
        $chest = Block::fromString("Chest");
           $level->setBlock($pos, $chest);
+          $chest->addItem($this->config["contents"]);
              if($chest->firstEmpty() == -1) {
                 $air = Block::fromString("Air");
                 $level->setBlock($pos, $air);
