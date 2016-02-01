@@ -21,8 +21,10 @@ use pocketmine\math\Vector3;
        $z = $this->config["z"];
        $pos = new Vector3($x, $y, $z);
        $chest = Block::fromString("Chest");
+//     $items = array($this->config["contents"]);         * add fromString
+       $contents = array_rand($items);
           $level->setBlock($pos, $chest);
-          $chest->addItem($this->config["contents"]);
+          $chest->setContents($items[$contents]);
              if($chest->firstEmpty() == -1) {
                 $air = Block::fromString("Air");
                 $level->setBlock($pos, $air);
