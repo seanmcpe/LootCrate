@@ -2,29 +2,32 @@
 
 namespace Sean_M\LootCrate;
 
-use pocketmine\utils\TextFormat;
-use pocketmine\inventory\Inventory;
+
 use pocketmine\block\Block;
-use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
-    public function __construct(Main $plugin) {
+class LootCrate extends \pocketmine\scheduler\PluginTask {
 
+    public function __construct(Main $plugin) {
+        $this->plugin = $plugin;
     }
 
     public function onRun($currentTick) {
-       $level = $this->getLevel();
-       $x = $this->config["x"];
-       $y = $this->config["y"];
-       $z = $this->config["z"];
+       $level = $this->config["level"];
+       $x = $this->plugin->config["x"];
+       $y = $this->plugin->config["y"];
+       $z = $this->plugin->config["z"];
        $pos = new Vector3($x, $y, $z);
-       $chest = Block::fromString("Chest");
-       $items = array($this->config["contents"]);
-       $contents = array_rand($items);
+       $chest = $level->getTile($x, $y, $z);
+       if(!$chest instanceof \pocketmine\tile\Chest){
+          $items = array($this->config["contents"]);
+          $contents = array_rand($items);
           $level->setBlock($pos, $chest);
           $chest->setContents($items[$contents]);
-             if($chest->firstEmpty() == -1) {
-                $air = Block::fromString("Air");
-                $level->setBlock($pos, $air);
-             }
+          if($chest->getContents() == []) {
+              $air = Block::fromString("Air");
+              $level->setBlock($pos, $air);
+            }
+        }
     }
+}
