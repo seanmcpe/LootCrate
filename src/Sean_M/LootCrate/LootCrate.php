@@ -20,7 +20,7 @@ class LootCrate extends \pocketmine\scheduler\PluginTask {
        $pos = new Vector3($x, $y, $z);
        $chest = $level->getTile($x, $y, $z);
        if(!$chest instanceof \pocketmine\tile\Chest){
-          $items = array($this->config["contents"]);
+          $items = array($this->plugin->config["contents"]);
           $contents = array_rand($items);
           $level->setBlock($pos, $chest);
           $chest->setContents($items[$contents]);
