@@ -13,8 +13,15 @@ class Main extends PluginBase implements Listener {
      public function onEnable() {
         @mkdir($this->getDataFolder());
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(
-        "time" => 10))->getAll();
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML)->getAll();
+        if(!$this->getServer()->isLevelGenerated($config['level'])){
+            $this->getLogger()->error("The Level you used on config doesn't exist!");
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+        }
+        if(!$this->getServer()->isLevelLoaded($level)){
+            $this->getServer()->loadLevel($level);
+        }
+        
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
            $time = $this->config["time"];
            $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $time * 20);
