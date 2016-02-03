@@ -23,7 +23,7 @@ class Main extends PluginBase implements Listener {
         }
         
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
-           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), 1);
+           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $config['time']);
            $this->saveDefaultConfig();
      }
 
