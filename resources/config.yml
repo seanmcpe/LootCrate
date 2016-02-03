@@ -1,12 +1,16 @@
+---
 # LootCrate 1.0.0 Config
 
 # Crate spawn position:
 x: 128
 y: 4
 z: 128
+level: world
 
 # Amount of items the Crate will have:
 items: 1
 
 # Items the Crate can have:
 contents: 57
+time: 120
+...
