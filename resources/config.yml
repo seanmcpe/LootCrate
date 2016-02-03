@@ -4,6 +4,7 @@
 x: 128
 y: 4
 z: 128
+level: world
 
 # Amount of items the Crate will have:
 items: 1
