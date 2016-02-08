@@ -2,20 +2,20 @@
 
 namespace Sean_M\LootCrate;
 
-use pocketmine\Server;
-use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
+use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
 use pocketmine\utils\TextFormat;
-use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
+
     public $config;
 
      public function onEnable() {
-        @mkdir($this->getDataFolder()); 
+        @mkdir($this->getDataFolder());
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->config = (new Config($this->getDataFolder(). "config.yml", Config::YAML, array(
-        "time" => 10)));
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(
+        "time" => 10));
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
            $time = $this->config["time"];
            $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $time * 20);
