@@ -1,3 +1,4 @@
+---
 # LootCrate 1.0.0 Config
 
 # Crate spawn position:
@@ -10,3 +11,4 @@ items: 1
 
 # Items the Crate can have:
 contents: 57
+...
