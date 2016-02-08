@@ -1,6 +1,6 @@
 name: LootCrate
 main: Sean_M\LootCrate\Main
-version: "1.0.0"
+version: 1.0.0
 api: [1.0.0]
-description: I'll fill this out later.
+description: Spawn a chest with random (editable) items every so often!
 author: Sean_M
