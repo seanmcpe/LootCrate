@@ -17,8 +17,7 @@ class Main extends PluginBase implements Listener {
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(
         "time" => 10))->getAll();
         $this->getLogger()->info(TextFormat::GREEN . "LootCrate by Sean_M enabled!");
-           $time = $this->config["time"];
-           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $time * 20);
+           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $this->config["time"]);
            $this->saveDefaultConfig();
      }
 
