@@ -1,6 +1,9 @@
 ---
 # LootCrate 1.0.0 Config
 
+# How often the Crate will spawn in seconds:
+time: 60
+
 # Crate spawn position:
 x: 128
 y: 4
