@@ -2,13 +2,12 @@
 
 namespace Sean_M\LootCrate;
 
-// organize soon
-use pocketmine\utils\TextFormat;
-use pocketmine\inventory\Inventory;
 use pocketmine\block\Block;
+use pocketmine\inventory\Inventory;
 use pocketmine\level\Level;
-use pocketmine\math\Vector3;
+use pocketmine\utils\TextFormat as TF;
 use pocketmine\Server;
+use pocketmine\math\Vector3;
 
     public function __construct(Main $plugin) {
 
@@ -25,7 +24,7 @@ use pocketmine\Server;
        $contents = array_rand($items);
           $level->setBlock($pos, $chest);
           $chest->setContents($items[$contents]);
-//        $this->broadcastMessage("A crate has been spawned at" . $x $y $z . "!");
+//        $this->broadcastMessage(TF::GREEN "A crate has been spawned at" . $x $y $z . "!");
              if($chest->firstEmpty() == -1) {
                 $air = Block::fromString("Air");
                 $level->setBlock($pos, $air);
