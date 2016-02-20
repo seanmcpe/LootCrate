@@ -12,15 +12,14 @@ class Main extends PluginBase implements Listener {
   public $config;
 
     public function onEnable() {
-       @mkdir($this->getDataFolder());
+       $this->saveDefaultConfig();
        $this->getServer()->getPluginManager()->registerEvents($this, $this);
        $this->config = $this->getConfig()->getAll();
        $this->getLogger()->info(TF::GREEN . "LootCrate by Sean_M enabled!");
           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $this->config["time"]);
-          $this->saveDefaultConfig();
     }
 
     public function onDisable() {
        $this->getLogger()->info(TF::RED . "LootCrate by Sean_M disabled!");
     }
-}  
+}
