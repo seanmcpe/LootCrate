@@ -14,8 +14,7 @@ class Main extends PluginBase implements Listener {
     public function onEnable() {
        @mkdir($this->getDataFolder());
        $this->getServer()->getPluginManager()->registerEvents($this, $this);
-       $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(
-       "time" => 10))->getAll();
+       $this->config = $this->getConfig()->getAll();
        $this->getLogger()->info(TF::GREEN . "LootCrate by Sean_M enabled!");
           $this->getServer()->getScheduler()->scheduleRepeatingTask(new LootCrate($this), $this->config["time"]);
           $this->saveDefaultConfig();
