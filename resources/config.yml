@@ -2,15 +2,16 @@
 # LootCrate v1.0.0 by Sean_M Config
 
 # How often the Crate will spawn in seconds:
-time: 60
+time: 30
 
 # Crate spawn position:
-x: 128
-y: 4
-z: 128
+"x": 147
+"y": 31
+"z": 120
 
+# SOON
 # Amount of items the Crate will have:
-items: 1
+# items: 1
 
 # Items the Crate can have:
 contents: 57
