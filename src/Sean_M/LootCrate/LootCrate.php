@@ -26,15 +26,17 @@ class LootCrate extends PluginTask {
          $y = $this->plugin->config["y"];
          $z = $this->plugin->config["z"];
          $pos = new Vector3($x, $y, $z);
-         $chest = Block::fromString("Chest");
+         $tile = $level->getTile($pos);
+         $chest = Block::get(Block::CHEST);
          $items = array($this->plugin->config["contents"]);
          $contents = array_rand($items);
             $level->setBlock($pos, $chest);
-            $chest->setContents($items[$contents]);
+            $tile->getInventory()->setContents([Item::get(Item::DIAMOND_SWORD), Item::get(Item::DIAMOND_PICKAXE)]);
+//                                                              ^ ($items[$contents])
             $server->broadcastMessage("CRATE SPAWNED");
-               if($chest->firstEmpty() == -1) {
-                  $air = Block::fromString("Air");
-                  $level->setBlock($pos, $air);
-             }
-      }
+              if($chest->firstEmpty() == -1) {
+                 $air = Block::get(Block::AIR);
+                 $level->setBlock($pos, $air);
+              }
+       }
 }
